@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reservation</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= navbar inverted: true do %>
+    <%= vertical do %>
+      <%= link_to 'Reservation System', root_path %>
+    <% end %>
+  <% end %>
+
+  <div id="main-container" class="container">
+    <div class="row">
+      <div id="content" class="col-xs-12">
+        <!-- messages -->
+        <%= render 'shared/messages' %>
+        <!-- main content -->
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

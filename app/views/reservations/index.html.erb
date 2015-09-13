@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <h1>Reservations</h1>
+    <br/>
+    <div class="well">
+      <%= render 'reservations/form' %>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:40px"></div>
+
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+
+    <%- if @reservations.none? %>
+
+      <h3 id="table_message">No existing reservations</h3>
+
+    <%- else %>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th class="text-center">Table #</th>
+            <th class="text-center">Table Capacity</th>
+            <th class="text-center">Party Size</th>
+            <th class="text-center">Reservation Date / Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @reservations.each do |reservation| %>
+            <tr class="reservations_list_item">
+              <td><%= reservation.customer.name %></td>
+              <td class="text-center"><%= reservation.table.number %></td>
+              <td class="text-center"><%= reservation.table.num_seats %></td>
+              <td class="text-center"><%= reservation.party_size %></td>
+              <td class="text-center"><%= reservation.requested_datetime.strftime("%x %H:%M") %></td>
+              <td><%= link_to 'Cancel', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+== README
+
+This README documents the steps that are necessary to get the
+Restaurant Reservation System application up and running.
+
+* Ruby version
+  This was developed using ruby 2.2.1p85 and Rails 4.2.3
+
+* Application initailization
+  > bundle install
+
+* Database initialization
+  > rake db:migrate
+  > rake db:setup
+
+* How to run the test suite
+  > rspec
+
+* View Test Coverage Report
+  > open ./coverage/index.html
+
+* Run the application
+  > foreman start
+  > open http://localhost:5000
+
+Point browser to  http://localhost:5000
+

@@ -1,0 +1,22 @@
+<% if @reservation.errors.any? %>
+  <%= alert_box context: :alert do %>
+    <ul>
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= form_for(@reservation, layout: 'inline') do |f| %>
+
+  <%= fields_for :customer, @reservation.customer do |customer| %>
+    <div class="form-group">
+      <%= customer.text_field :name, placeholder: "Customer Name", class: "form-control" %>
+    </div>
+  <% end %>
+  <%= f.number_field :party_size %>
+  <%= f.datetime_select :requested_datetime, minute_step: 60 %>
+  <%= f.submit 'Make Reservation', style: 'margin-left:20px' %>
+
+<% end %>
